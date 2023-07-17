@@ -1,23 +1,25 @@
+
 #include "InputManager.hpp"
 
-namespace Bhurtel{
+namespace Bhurtel
+{
+	bool InputManager::IsSpriteClicked(sf::Sprite object, sf::Mouse::Button button, sf::RenderWindow &window)
+	{
+		if (sf::Mouse::isButtonPressed(button))
+		{
+			sf::IntRect playButtonRect(object.getPosition().x, object.getPosition().y, object.getGlobalBounds().width, object.getGlobalBounds().height);
 
-bool InputManager::isSpriteClicked( sf::Sprite object, sf::Mouse::Button button, sf::RenderWindow &window){
-    if(sf::Mouse::isButtonPressed(button)){
-        
-        sf::IntRect tempRect(object.getPosition().x, object.getPosition().y, object.getGlobalBounds().width, object.getGlobalBounds().height);
-        
-        if(tempRect.contains(sf::Mouse::getPosition(window))){
-            return true;
-        }
-    }
-    return false;
-    
-};
+			if (playButtonRect.contains(sf::Mouse::getPosition(window)))
+			{
+				return true;
+			}
+		}
 
-sf::Vector2i InputManager::GetMousePosition(sf::RenderWindow &window){
-    
-    return sf::Mouse::getPosition(window);
-    }
+		return false;
+	}
+
+	sf::Vector2i InputManager::GetMousePosition(sf::RenderWindow &window)
+	{
+		return sf::Mouse::getPosition(window);
+	}
 }
-

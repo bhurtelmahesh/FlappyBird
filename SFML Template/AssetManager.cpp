@@ -24,4 +24,3 @@ sf::Font &AssetManager::GetFont(std::string name){
     
 }
 }
-
